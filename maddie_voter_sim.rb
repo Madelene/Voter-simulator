@@ -54,11 +54,41 @@ def add_new_voter
   puts "Please enter your name:"
   print "> "
   name_I_entered = gets.chomp.capitalize
-  puts "Please enter your affiliation:"
-  print "> "
-  party_i_entered = gets.chomp.capitalize
-  new_voter = Voter.new(name_I_entered, party_i_entered)
-  @votingbooth.add_voters(new_voter)
+  puts "Please choose from the following options: (L)iberal, (C)onservative, (T)ea Party, (S)ocialist, or (N)eutral"
+  loop do
+    print "> "
+    party_i_entered = gets.chomp.capitalize
+    case party_i_entered
+      when
+          "L"
+          puts "You have chosen Liberal"
+          party_i_entered = "Liberal"
+      when
+          "C"
+          puts "You have chosen Conservative"
+          party_i_entered = "Conservative"
+      when
+            "T"
+            puts "You have chosen Tea Party"
+            party_i_entered = "Tea Party"
+      when
+            "S"
+            puts "Socialist"
+            party_i_entered = "Socialist"
+      when
+            "N"
+            puts "Neutral"
+            party_i_entered = "Neutral"
+      else
+            puts "Try again. Make sure you're choosing from the above options."
+      end
+    end
+
+
+
+    new_voter = Voter.new(name_I_entered, party_i_entered)
+    @votingbooth.add_voters(new_voter)
+
 end
 
 def add_new_politician
@@ -71,10 +101,6 @@ def add_new_politician
   new_politician = Politician.new(name_I_entered, political_party)
   @votingbooth.add_politicians(new_politician)
 end
-
-
-
-
 
 
 loop do
